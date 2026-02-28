@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ──────────────────────────────────────────── */
+:root {
+  --color-ink: #0f0e0d;
+  --color-seashell: #fffae5;
+  --color-cream: #f5f0e8;
+  --color-parchment: #ede8df;
+  --color-gold: #c9a96e;
+  --color-gold-light: #e2c99a;
+  --color-muted: #7a7060;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-outfit), system-ui, sans-serif;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at center, #fffcf3 0%, var(--color-seashell) 100%);
+  background-attachment: fixed;
+  color: var(--color-ink);
+}
+
+/* ─── Universal Rounding ─────────────────────────────────────── */
+* {
+  border-radius: inherit;
+}
+
+img,
+button,
+a,
+input,
+div.gallery-card,
+.artwork-float {
+  border-radius: var(--radius-md);
+}
+
+/* ─── Typography Scale ───────────────────────────────────────── */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* ─── Animations ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ─── Utility Classes ────────────────────────────────────────── */
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ─── Hero Overlay Gradient ──────────────────────────────────── */
+.hero-overlay {
+  background: linear-gradient(to right,
+      rgba(15, 14, 13, 0.82) 0%,
+      rgba(15, 14, 13, 0.55) 55%,
+      rgba(15, 14, 13, 0.15) 100%);
+}
+
+/* ─── Artwork Floating Shadow ────────────────────────────────── */
+.artwork-shadow {
+  box-shadow:
+    0 10px 30px -10px rgba(0, 0, 0, 0.3),
+    0 20px 60px -20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.artwork-float {
+  box-shadow:
+    0 0 0 1px rgba(201, 169, 110, 0.12),
+    0 8px 32px rgba(15, 14, 13, 0.12),
+    0 32px 80px rgba(15, 14, 13, 0.15),
+    0 0 120px rgba(201, 169, 110, 0.05);
+  border-radius: var(--radius-lg);
+}
+
+/* ─── Grain Texture Overlay ──────────────────────────────────── */
+.grain-overlay::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-seashell);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 2px;
+}
+
+/* ─── Gold Button ────────────────────────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2.5rem;
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.btn-gold:hover {
+  background-color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 169, 110, 0.3);
+}
+
+.btn-gold:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ─── Link Underline Animated ────────────────────────────────── */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-gold);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── Gallery Card ───────────────────────────────────────────── */
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+}
+
+.gallery-card img {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: var(--radius-md);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.04);
+}
