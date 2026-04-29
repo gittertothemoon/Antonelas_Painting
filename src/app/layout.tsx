@@ -23,16 +23,6 @@ export const metadata: Metadata = {
     title: "Arte Originale — Pezzi Unici Dipinti a Mano",
     description:
         "Opere d'arte originali dipinte a mano. Non realizzo riproduzioni né stampe. Ogni opera è un pezzo unico, il tuo.",
-    icons: {
-        icon: [
-            { url: "/favicon.ico", sizes: "any" },
-            { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-            { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-        ],
-        apple: [
-            { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-        ],
-    },
     openGraph: {
         title: "Arte Originale — Pezzi Unici Dipinti a Mano",
         description:
@@ -49,6 +39,12 @@ export default function RootLayout({
 }) {
     return (
         <html lang="it" className={`${cormorant.variable} ${outfit.variable}`}>
+            <head>
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="shortcut icon" href="/favicon.ico" />
+            </head>
             <body className="bg-cream text-ink antialiased">
                 <CartProvider>
                     <Navbar />
