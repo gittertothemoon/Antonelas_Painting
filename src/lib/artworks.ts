@@ -36,30 +36,6 @@ export const artworks: Artwork[] = [
         image: "/opere/varco-di-primavera.png",
         price: 980,
     },
-    {
-        id: "alba-dorata",
-        title: "Alba Dorata",
-        year: 2023,
-        dimensions: "80 × 100 cm",
-        materials: "Olio su tela",
-        canvasType: "Tela di lino grezza",
-        description:
-            "Una composizione astratta che cattura la luce dell'alba attraverso strati sovrapposti di pigmento puro. La texture emergente dialoga con il silenzio del mattino.",
-        image: "https://picsum.photos/seed/alba-dorata/800/1000",
-        price: 1200,
-    },
-    {
-        id: "bosco-antico",
-        title: "Bosco Antico",
-        year: 2022,
-        dimensions: "60 × 90 cm",
-        materials: "Acrilico e foglia d'oro su tela",
-        canvasType: "Tela di cotone grezza 400g",
-        description:
-            "Il bosco come memoria ancestrale. Pennellate decise alternano zone di silenzio cromatico a esplosioni di materia viva.",
-        image: "https://picsum.photos/seed/bosco-antico/600/900",
-        price: 750,
-    },
 ];
 
 export function getArtwork(id: string): Artwork | undefined {
